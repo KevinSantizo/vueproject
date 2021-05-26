@@ -23,135 +23,34 @@
       <img class="header-logo"  src="../assets/bitmec.png"  alt="" />
     </div>
     </div>
-    <div class="ag-main">
-      <div class="ag-container">
-        <AgoraVideoCall 
-          :videoProfile="videoProfile"
-          :channel="channel"
-          :transcode="transcode"
-          :attendeeMode="attendeeMode"
-          :baseMode="baseMode"
-          :appId="appId"
-          :uid="uid"></AgoraVideoCall>
-      </div>  
-    </div>
+    <v-row no-gutters>
+      <v-col cols="12" sm="6">
+        <div class="ag-main">
+          <div class="ag-container">
+            <AgoraVideoCall 
+              :videoProfile="videoProfile"
+              :channel="channel"
+              :transcode="transcode"
+              :attendeeMode="attendeeMode"
+              :baseMode="baseMode"
+              :appId="appId"
+              :uid="uid"></AgoraVideoCall>
+          </div>  
+        </div>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <div class="ag-main">
+          <div class="ag-container">
+              <PersonalInformationForm/>
+          </div>  
+        </div>
+      </v-col>
+    </v-row>
+    
 
     <!-- Información personal del patient -->
 
-    <div v-if="piCard" class="animated animatedFadeInUp fadeInUp">
-      <PersonalInformationCard
-        :firstName="firstName"
-        :lastName="lastName"
-        :dpi="dpi"
-        :phoneNumber="phoneNumber"
-        :bornDate="bornDate"></PersonalInformationCard>
-    </div>
-
-    <!-- Padecimientos -->
-    <div v-if="suffCard" class="animated animatedFadeInUp fadeInUp">
-      <SufferingInformationCard
-        :suff1="suff1"
-        :suff2="suff2"></SufferingInformationCard>
-    </div>
-
-    <!-- Cirugías -->
-
-    <div v-if="surgCard" class="animated animatedFadeInUp fadeInUp">
-      <SurgeriesCard
-        :surgeryName='surgeryName'
-        :surgeryDescription='surgeryDescription'
-        :date='date'></SurgeriesCard>
-    </div>
-
-    <!-- Medicamentos -->
-
-    <div v-if="mediCard" class="animated animatedFadeInUp fadeInUp">
-      <MedicineCard
-        :medicineName='medicineName'
-        :medicineName2='medicineName2'
-        :dateM='dateM'
-        :dateM2='dateM2'
-        :doseM='doseM'
-        :doseM2='doseM2'></MedicineCard>
-    </div>   
-
-    <!-- Salud reproductiva -->
-
-    <div v-if="repHealthCard" class="animated animatedFadeInUp fadeInUp">
-      <ReproductiveHealthCard
-        :answer='answer'
-        :startDate='startDate'
-        :finalDate='finalDate'
-        ></ReproductiveHealthCard>
-    </div> 
-
-    <!-- Salud reproductiva embarazada -->
-
-    <div v-if="repHealthPregnancyCard" class="animated animatedFadeInUp fadeInUp">
-      <ReproductiveHealthPregnancyCard
-        :answerPregnancy='answerPregnancy'
-        :cant='cant'
-        :children='children'
-        ></ReproductiveHealthPregnancyCard>
-    </div>  
-
-    <!-- Anticonceptivos -->
-
-    <div v-if="contraceptiveCard" class="animated animatedFadeInUp fadeInUp">
-      <ContraceptivesCard
-        :contraceptive='contraceptive'
-        :startDateC='startDateC'
-        ></ContraceptivesCard>
-    </div>  
-
-    <!-- Salud Historial familiar -->
-
-    <div v-if="familyHistoryCard" class="animated animatedFadeInUp fadeInUp">
-      <FamilyHistoryCard
-        :diseaseName='diseaseName'
-        :diseaseName2='diseaseName2'
-        :relative='relative'
-        :relative2='relative2'
-        :dateD='dateD'
-        :dateD2='dateD2'
-        ></FamilyHistoryCard>
-    </div> 
-
-    <!-- Hábitos -->
-
-    <div v-if="habitCard" class="animated animatedFadeInUp fadeInUp">
-      <HabitsCard
-        :habitName='habitName'
-        :dateH='dateH'
-        :description='description'
-        ></HabitsCard>
-    </div>  
-
-    <!-- Signos vitales -->
-
-    <div v-if="vitalSignsCard" class="animated animatedFadeInUp fadeInUp">
-      <VitalSignsCard
-        :weight='weight'
-        :height='height'
-        :oxygen='oxygen'
-        :temperature='temperature'
-        :bpmF='bpmF'
-        :dPressure='dPressure'
-        :sPressure='sPressure'
-        ></VitalSignsCard>
-    </div> 
-
-    <!-- Información para consulta -->
-
-    <div v-if="informationForConsultationCard" class="animated animatedFadeInUp fadeInUp">
-      <InformationForConsultationCard
-        :bodyPart='bodyPart'
-        :evolutionDate='evolutionDate'
-        :intensity='intensity'
-        :descriptionIC='descriptionIC'
-        ></InformationForConsultationCard>
-    </div> 
-
+    
 
   </div>
 </v-app>
@@ -164,33 +63,13 @@ import * as Cookies from "js-cookie";
 import AgoraVideoCall from "@/components/AgoraVideoCall";
 import {AGORA_APP_ID} from "@/agora.config"
 
-//import cards
-import PersonalInformationCard from "@/components/cards/PersonalInformationCard"
-import SufferingInformationCard from "@/components/cards/SufferingInformationCard"
-import SurgeriesCard from "@/components/cards/SurgeriesCard"
-import MedicineCard from "@/components/cards/MedicineCard"
-import ReproductiveHealthCard from "@/components/cards/ReproductiveHealthCard"
-import ReproductiveHealthPregnancyCard from "@/components/cards/ReproductiveHealthPregnancyCard"
-import ContraceptivesCard from "@/components/cards/ContraceptivesCard"
-import FamilyHistoryCard from "@/components/cards/FamilyHistoryCard"
-import HabitsCard from "@/components/cards/HabitsCard"
-import VitalSignsCard from "@/components/cards/VitalSignsCard"
-import InformationForConsultationCard from "@/components/cards/InformationForConsultationCard"
+import PersonalInformationForm from "@/components/forms/PersonalInformationForm"
 
 export default {
   components: {
     AgoraVideoCall,
-    PersonalInformationCard,
-    SufferingInformationCard,
-    SurgeriesCard,
-    MedicineCard,
-    ReproductiveHealthCard,
-    ReproductiveHealthPregnancyCard,
-    ContraceptivesCard,
-    FamilyHistoryCard,
-    HabitsCard,
-    VitalSignsCard,
-    InformationForConsultationCard
+    PersonalInformationForm,
+    
   },
 
   data() {
@@ -371,12 +250,7 @@ export default {
 
 <style scoped>
 
-.meeting.wrapper {
-  background: #E5FAFF;
-  background: -webkit-linear-gradient(to right, #E5FAFF, #D7ECFF, #E5FAFF);
-  background: linear-gradient(to right, #E5FAFF, #D7ECFF, #E5FAFF);
-  height: 100%;
-}
+
 
 .meeting .ag-header {
   padding: 20px 30px ;
@@ -405,7 +279,7 @@ export default {
 }
 
 .header-logo {
-  width: 30%;
+  width: 15%;
   margin-right: 12px;
   margin-top: 30px;
 }

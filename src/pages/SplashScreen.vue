@@ -1,34 +1,19 @@
 <template>
-  <v-app  style="
-    background: #E5FAFF;
-    background: -webkit-linear-gradient(to right, #E5FAFF, #D7ECFF, #E5FAFF);
-    background: linear-gradient(to right, #E5FAFF, #D7ECFF, #E5FAFF);
-  ">
+  <v-app>
 
-  <div>
-    <img src="../assets/bitmec.png" height="75px" style="margin: 30px 0px 10px 30px">
-  </div>
-  <v-card
-    elevation="5"
-    class="pt-5 pb-15 pr-15 pl-15 mt-5 card"
-    
-  >
-  <v-card-title class="display-2 grey--text font-weight-bold">
-    En un momento<br>te atenderá un<br>asistente
-  </v-card-title>
-   <v-container class="">
-      <v-img
-        height="60%"
-        src="../assets/doctors.png"
-      >
-    </v-img>
+    <v-container fill-height fluid>
+        <v-row align="center"
+            justify="center">
+              <div>
+                <v-img
+                    height="100%"
+                    src="../assets/bitmec.png"
+                  >
+                </v-img>
+              </div>
+        </v-row>
     </v-container>
-    <v-row justify="center"  align="center">
-      <div class=" pa-3 shadow text-center">
-        <span class=" white--text font-weight-bold" style="font-size: 25px;">Conectándote</span>
-      </div>
-    </v-row>
-  </v-card>
+     
   </v-app>
 </template>
 
@@ -123,17 +108,20 @@ export default {
 </script>
 
 <style>
-  .card {
-    width: calc(100% - 60px);
-    margin-top: 30px;
-    margin-left: 30px;
-  }
-
-  .shadow{
-    width: 300px;
-    border-radius: 20px;
-    background-color: #8DDAFC;
-    box-shadow: 5px 5px 8px #8DDAFC;
+.parent {
+background: #CCCCCC;
+height: 200px;
+width: 200px;
+position: relative;
+}
+.child {
+background: #FFFF00;
+width: 70px;
+height: 70px;
+position: absolute;
+top: 50%;
+left: 50%;
+margin: -35px 0 0 -35px;
 }
   
 </style>

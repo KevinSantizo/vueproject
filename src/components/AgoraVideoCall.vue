@@ -347,7 +347,7 @@ export default {
           item.play("ag-item-" + id);
         }
         if (index === no - 1) {
-          dom.setAttribute("style", `grid-area: span 12/span 24/13/25`);
+          dom.setAttribute("style", `grid-area: span 42/span 24/13/25`);
         } else {
           dom.setAttribute(
             "style",
